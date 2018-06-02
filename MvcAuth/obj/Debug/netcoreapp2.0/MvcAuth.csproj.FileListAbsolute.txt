@@ -1,0 +1,11 @@
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.deps.json
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.runtimeconfig.json
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.runtimeconfig.dev.json
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.dll
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.csproj.CoreCompileInputs.cache
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.AssemblyInfoInputs.cache
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.AssemblyInfo.cs
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.pdb
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.dll
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.pdb
+E:\CodeManage\GitHub\AspNetCore\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.csprojResolveAssemblyReference.cache
