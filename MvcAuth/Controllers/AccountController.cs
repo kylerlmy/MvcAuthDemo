@@ -13,17 +13,29 @@ namespace MvcAuth.Controllers
 
     public class AccountController : Controller
     {
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult LoginIn()
+        {
+            return View();
+        }
+
+
+
         //[Authorize]  如果启用，将会一直循环跳转
         public IActionResult MakeLogin()
         {
 
             //模拟用户认证登录
-            var claims=new List<Claim>
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name,"Kyle"),
                 new Claim(ClaimTypes.Role,"Admin"),
             };
-                var claimIdentity=new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
+            var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
 
             HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
@@ -40,5 +52,5 @@ namespace MvcAuth.Controllers
     }
 
 
-   
+
 }
