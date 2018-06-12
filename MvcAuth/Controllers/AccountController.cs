@@ -18,8 +18,8 @@ namespace MvcAuth.Controllers
     {
 
         private UserManager<ApplicationUser> _userManager;
-        private UserManager<ApplicationUser> _signInManager;
-        public AccountController(UserManager<ApplicationUser> userManager, UserManager<ApplicationUser> signInManage)
+        private SignInManager<ApplicationUser> _signInManager;
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManage)
         {
             _userManager = userManager;
             _signInManager = signInManage;
@@ -46,6 +46,8 @@ namespace MvcAuth.Controllers
 
             if (identityResult.Succeeded)
             {
+                //HttpContext.SignInAsync
+                await _signInManager.SignInAsync(identityUser, new AuthenticationProperties { IsPersistent = true });
                 return RedirectToAction("Index", "Home");
             }
 
@@ -59,6 +61,21 @@ namespace MvcAuth.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Login(RegisterViewModel viewModel)
+        {
+            var user = await _userManager.FindByEmailAsync(viewModel.Email);
+
+            if (user == null)
+            {
+
+            }
+
+            await _signInManager.SignInAsync(user, new AuthenticationProperties { IsPersistent = true });
+            return RedirectToAction("Index", "Home");
+        }
+
+
 
 
         //[Authorize]  如果启用，将会一直循环跳转
@@ -80,10 +97,21 @@ namespace MvcAuth.Controllers
         }
 
 
-        public IActionResult LogOut()
+        //public IActionResult Logout()
+        //{
+        //    HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+
+        /// <summary>
+        ///这里使用的时Post提交方式（再前端的Form表单中指定），因为，退出登录时，需要拿着相应的Cookie来请求退出 
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.SignOutAsync();
-            return Ok();
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 
