@@ -47,27 +47,43 @@ namespace MvcAuth.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel viewModel,string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            var identityUser = new ApplicationUser
-            {
-                Email = viewModel.Email,
-                UserName = viewModel.Email,
-                NormalizedUserName = viewModel.Email
-            };
-            var identityResult = await _userManager.CreateAsync(identityUser, viewModel.Password);
 
-            if (identityResult.Succeeded)
+            if (ModelState.IsValid)
             {
-                //HttpContext.SignInAsync
-                await _signInManager.SignInAsync(identityUser, new AuthenticationProperties { IsPersistent = true });
-                return RedirectToLocal(returnUrl);
-                //return RedirectToAction("Index", "Home");
+                ViewData["ReturnUrl"] = returnUrl;
+                var identityUser = new ApplicationUser
+                {
+                    Email = viewModel.Email,
+                    UserName = viewModel.Email,
+                    NormalizedUserName = viewModel.Email
+                };
+                var identityResult = await _userManager.CreateAsync(identityUser, viewModel.Password);
+
+                if (identityResult.Succeeded)
+                {
+                    //HttpContext.SignInAsync
+                    await _signInManager.SignInAsync(identityUser, new AuthenticationProperties { IsPersistent = true });
+                    return RedirectToLocal(returnUrl);
+                    //return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    AddErrors(identityResult);
+                }
             }
-
+          
 
             return View();
         }
 
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty,error.Description);
+            }
+        }
 
 
         public IActionResult Login(string returnUrl = null)
@@ -76,20 +92,26 @@ namespace MvcAuth.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(RegisterViewModel viewModel,string returnUrl = null)
+        public async Task<IActionResult> Login(LoginViewModel viewModel,string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            var user = await _userManager.FindByEmailAsync(viewModel.Email);
 
-            if (user == null)
+            if (ModelState.IsValid)
             {
+                ViewData["ReturnUrl"] = returnUrl;
+                var user = await _userManager.FindByEmailAsync(viewModel.Email);
 
+                if (user == null)
+                {
+
+                }
+
+                await _signInManager.SignInAsync(user, new AuthenticationProperties { IsPersistent = true });
+                //return RedirectToAction("Index", "Home");
+
+                return RedirectToLocal(returnUrl);
             }
 
-            await _signInManager.SignInAsync(user, new AuthenticationProperties { IsPersistent = true });
-            //return RedirectToAction("Index", "Home");
-
-            return RedirectToLocal(returnUrl);
+            return View();
         }
 
 

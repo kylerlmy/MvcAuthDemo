@@ -20,3 +20,14 @@ C:\WorkeSpace\Project\GitHub\Microsoft\AspNetCore\Demo\MvcAuthCookie\MvcAuthDemo
 C:\WorkeSpace\Project\GitHub\Microsoft\AspNetCore\Demo\MvcAuthCookie\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.dll
 C:\WorkeSpace\Project\GitHub\Microsoft\AspNetCore\Demo\MvcAuthCookie\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.pdb
 C:\WorkeSpace\Project\GitHub\Microsoft\AspNetCore\Demo\MvcAuthCookie\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.csprojAssemblyReference.cache
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.deps.json
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.runtimeconfig.json
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.runtimeconfig.dev.json
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.dll
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\bin\Debug\netcoreapp2.0\MvcAuth.pdb
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.csprojAssemblyReference.cache
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.csproj.CoreCompileInputs.cache
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.AssemblyInfoInputs.cache
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.AssemblyInfo.cs
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.dll
+E:\CodeManage\GitHub\AspNetCore\Demo\CookieAuthDemo\MvcAuthDemo\MvcAuth\obj\Debug\netcoreapp2.0\MvcAuth.pdb
