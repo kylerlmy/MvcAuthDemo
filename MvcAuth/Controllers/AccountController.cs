@@ -25,17 +25,29 @@ namespace MvcAuth.Controllers
             _signInManager = signInManage;
         }
 
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
         /// <summary>
         /// 添加注册功能时（添加包好ViewModel的方法）时，也要保留这个方法，否则，无法请求注册页面（返回状态码404）
         /// </summary>
         /// <returns></returns>
-        public IActionResult Register()
+        public IActionResult Register(string returnUrl=null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel viewModel)
+        public async Task<IActionResult> Register(RegisterViewModel viewModel,string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             var identityUser = new ApplicationUser
             {
                 Email = viewModel.Email,
@@ -48,7 +60,8 @@ namespace MvcAuth.Controllers
             {
                 //HttpContext.SignInAsync
                 await _signInManager.SignInAsync(identityUser, new AuthenticationProperties { IsPersistent = true });
-                return RedirectToAction("Index", "Home");
+                return RedirectToLocal(returnUrl);
+                //return RedirectToAction("Index", "Home");
             }
 
 
@@ -57,13 +70,15 @@ namespace MvcAuth.Controllers
 
 
 
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(RegisterViewModel viewModel)
+        public async Task<IActionResult> Login(RegisterViewModel viewModel,string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             var user = await _userManager.FindByEmailAsync(viewModel.Email);
 
             if (user == null)
@@ -72,7 +87,9 @@ namespace MvcAuth.Controllers
             }
 
             await _signInManager.SignInAsync(user, new AuthenticationProperties { IsPersistent = true });
-            return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
+
+            return RedirectToLocal(returnUrl);
         }
 
 
