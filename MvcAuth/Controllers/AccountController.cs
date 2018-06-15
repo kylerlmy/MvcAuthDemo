@@ -39,13 +39,13 @@ namespace MvcAuth.Controllers
         /// 添加注册功能时（添加包好ViewModel的方法）时，也要保留这个方法，否则，无法请求注册页面（返回状态码404）
         /// </summary>
         /// <returns></returns>
-        public IActionResult Register(string returnUrl=null)
+        public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel viewModel,string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel viewModel, string returnUrl = null)
         {
 
             if (ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace MvcAuth.Controllers
                     AddErrors(identityResult);
                 }
             }
-          
+
 
             return View();
         }
@@ -81,7 +81,7 @@ namespace MvcAuth.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError(string.Empty,error.Description);
+                ModelState.AddModelError(string.Empty, error.Description);
             }
         }
 
@@ -92,7 +92,7 @@ namespace MvcAuth.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel viewModel,string returnUrl = null)
+        public async Task<IActionResult> Login(LoginViewModel viewModel, string returnUrl = null)
         {
 
             if (ModelState.IsValid)
@@ -102,13 +102,22 @@ namespace MvcAuth.Controllers
 
                 if (user == null)
                 {
-
+                    ModelState.AddModelError(string.Empty, "Register please");//必须在View中使用 asp-validation-summary提示信息才能在界面输出
+                    return View();
                 }
 
-                await _signInManager.SignInAsync(user, new AuthenticationProperties { IsPersistent = true });
+                //await _signInManager.SignInAsync(user, new AuthenticationProperties { IsPersistent = true });
                 //return RedirectToAction("Index", "Home");
 
-                return RedirectToLocal(returnUrl);
+                var result = await _signInManager.PasswordSignInAsync(user, viewModel.Password, true, false);
+
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError(string.Empty, "password error");
+                    return View();
+                }
+
+                return RedirectToAction("Index", "Home");
             }
 
             return View();

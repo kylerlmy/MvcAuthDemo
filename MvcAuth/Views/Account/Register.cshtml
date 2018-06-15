@@ -31,5 +31,5 @@
 
 
 @section Scripts {
-   @await Component.InvokeAsync("")
+   @await Html.PartialAsync("_ValidationScriptsPartial");@*重启VS解决Html属性找不到的问题*@
 }

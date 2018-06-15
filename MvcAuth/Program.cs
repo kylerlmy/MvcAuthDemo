@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MvcAuth.Data;
 
 namespace MvcAuth
 {
@@ -14,7 +15,12 @@ namespace MvcAuth
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            BuildWebHost(args)
+                .MigrateDbContext<ApplicationDbContext>((context,serviceProvider)=> { //在启动之前应用Seed方法
+                    new ApplicationDbContextSeed().SeedAsync(context, serviceProvider)
+                    .Wait();
+                })
+                .Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

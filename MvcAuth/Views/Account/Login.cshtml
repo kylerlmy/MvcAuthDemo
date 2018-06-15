@@ -6,12 +6,14 @@
 <div class="row">
     <div class="col-md-4">
         <section>
-            <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewData["ReturnUrl"]">@*不指定Controller和Action，Account的指定控制器也可以接收到请求*@
+            <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                @*不指定Controller和Action，Account的指定控制器也可以接收到请求*@
                 <h4>Use a local account to log in.</h4>
                 <hr />
+                <div class="text-danger" asp-validation-summary="All"></div>
                 <div class="form-group">
                     <label asp-for="Email"></label>
-                    <input asp-for="Email" class="form-control" /> 
+                    <input asp-for="Email" class="form-control" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -24,6 +26,9 @@
                     <button type="submit" class="btn btn-default">Log in</button>
                 </div>
             </form>
-        </section>
-    </div>
+    </section>
 </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial");@*重启VS解决Html属性找不到的问题*@
+}
