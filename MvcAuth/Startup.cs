@@ -12,6 +12,9 @@ using MvcAuth.Models;
 using MvcAuth.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace MvcAuth
 {
@@ -65,7 +68,18 @@ namespace MvcAuth
                 app.UseExceptionHandler("/Home/Error");
             }
 
+
+            //静态文件能够被保存在网站根目录下的任意文件夹内，并通过相对根的路径来访问
+            //http://<app>/images/<imageFileName>
+            //http://localhost:9189/images/banner3.svg
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), @"MyStaticFiles")),
+                RequestPath = new PathString("/StaticFiles")
+            });
+
 
             app.UseAuthentication();
 

@@ -13158,11 +13158,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WorkeSpace\\Project\\GitHub\\Microsoft\\AspNetCore\\Demo\\MvcAuthCookie\\MvcAuthDemo\\MvcAuth\\MvcAuth.csproj",
+      "projectUniqueName": "C:\\WorkeSpace\\Project\\GitHub\\Microsoft\\AspNetCore\\Demo\\MvcAuthDemo\\MvcAuthDemoDev\\MvcAuthDemo\\MvcAuth\\MvcAuth.csproj",
       "projectName": "MvcAuth",
-      "projectPath": "C:\\WorkeSpace\\Project\\GitHub\\Microsoft\\AspNetCore\\Demo\\MvcAuthCookie\\MvcAuthDemo\\MvcAuth\\MvcAuth.csproj",
+      "projectPath": "C:\\WorkeSpace\\Project\\GitHub\\Microsoft\\AspNetCore\\Demo\\MvcAuthDemo\\MvcAuthDemoDev\\MvcAuthDemo\\MvcAuth\\MvcAuth.csproj",
       "packagesPath": "C:\\Users\\28119\\.nuget\\packages\\",
-      "outputPath": "C:\\WorkeSpace\\Project\\GitHub\\Microsoft\\AspNetCore\\Demo\\MvcAuthCookie\\MvcAuthDemo\\MvcAuth\\obj\\",
+      "outputPath": "C:\\WorkeSpace\\Project\\GitHub\\Microsoft\\AspNetCore\\Demo\\MvcAuthDemo\\MvcAuthDemoDev\\MvcAuthDemo\\MvcAuth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

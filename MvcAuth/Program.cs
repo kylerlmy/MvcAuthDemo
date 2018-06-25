@@ -25,6 +25,7 @@ namespace MvcAuth
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+              .UseContentRoot(Directory.GetCurrentDirectory())//把项目的当前目录设置为 Content root，这样项目的 web root 就可以在开发阶段被明确
                 .UseStartup<Startup>()
                 .Build();
     }
